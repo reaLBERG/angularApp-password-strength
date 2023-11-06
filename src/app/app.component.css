@@ -1,0 +1,43 @@
+.sections{
+    margin-top: 2em;
+    text-align: center;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+}
+input{
+    width: 20rem;
+    height: 1em;
+    padding: 1em;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+.sections div{
+    width: 300px;
+    margin-bottom: 10px;
+}
+.gray {
+    background-color: gray;
+   }
+   
+   .red {
+    background-color: red;
+   }
+   
+   .yellow {
+    background-color: yellow;
+   }
+   
+   .green {
+    background-color: green;
+   }
+.gray, .red, .green{
+    color: white;
+}

@@ -1,0 +1,42 @@
+<header><h1>Test Password Strength App</h1></header>
+<main>
+  <div class="password-field">
+    <input
+      [(ngModel)]="password"
+      (input)="updateStrength()"
+      placeholder="Enter password"
+      type="password"
+    />
+  </div>
+  <div class="sections">
+    <div
+      [ngClass]="{
+        gray: strength == 'E',
+        red: strength == 'NE' || strength == 'L',
+        yellow: strength == 'M',
+        green: strength == 'S'
+      }"
+    >
+      First section
+    </div>
+    <div
+      [ngClass]="{
+        gray: strength == 'E' || strength == 'L',
+        red: strength == 'NE',
+        yellow: strength == 'M',
+        green: strength == 'S'
+      }"
+    >
+      Second section
+    </div>
+    <div
+      [ngClass]="{
+        gray: strength == 'E' || strength == 'L' || strength == 'M',
+        red: strength == 'NE',
+        green: strength == 'S'
+      }"
+    >
+      Third section
+    </div>
+  </div>
+</main>
