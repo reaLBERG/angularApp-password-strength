@@ -9,7 +9,7 @@ export class AppComponent {
   title='TestAngular';
   password = '';
   strength = 'E';
- 
+
   updateStrength() {
      if (!this.password) {
        this.strength = 'E';
@@ -28,5 +28,16 @@ export class AppComponent {
          this.strength = 'L';
        }
      }
+  }
+
+  getSectionClass(section: string) {
+    let strength = this.strength;
+    let classMap = {
+      gray: strength !== 'NE' || 'S',
+      red: strength === 'NE' || (strength === 'L' && section === 'first'),
+      yellow: strength === 'M' && section !== 'third',
+      green: strength === 'S' 
+    };
+    return classMap;
   }
  }

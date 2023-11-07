@@ -9,34 +9,8 @@
     />
   </div>
   <div class="sections">
-    <div
-      [ngClass]="{
-        gray: strength == 'E',
-        red: strength == 'NE' || strength == 'L',
-        yellow: strength == 'M',
-        green: strength == 'S'
-      }"
-    >
-      First section
-    </div>
-    <div
-      [ngClass]="{
-        gray: strength == 'E' || strength == 'L',
-        red: strength == 'NE',
-        yellow: strength == 'M',
-        green: strength == 'S'
-      }"
-    >
-      Second section
-    </div>
-    <div
-      [ngClass]="{
-        gray: strength == 'E' || strength == 'L' || strength == 'M',
-        red: strength == 'NE',
-        green: strength == 'S'
-      }"
-    >
-      Third section
-    </div>
+    <div [ngClass]="getSectionClass('first')">First section</div>
+    <div [ngClass]="getSectionClass('second')">Second section</div>
+    <div [ngClass]="getSectionClass('third')">Third section</div>
   </div>
 </main>
