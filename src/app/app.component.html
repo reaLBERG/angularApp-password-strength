@@ -1,16 +1,5 @@
 <header><h1>Test Password Strength App</h1></header>
 <main>
-  <div class="password-field">
-    <input
-      [(ngModel)]="password"
-      (input)="updateStrength()"
-      placeholder="Enter password"
-      type="password"
-    />
-  </div>
-  <div class="sections">
-    <div [ngClass]="getSectionClass('first')">First section</div>
-    <div [ngClass]="getSectionClass('second')">Second section</div>
-    <div [ngClass]="getSectionClass('third')">Third section</div>
-  </div>
+  <app-password-input></app-password-input>
+  <app-password-strength></app-password-strength>
 </main>
