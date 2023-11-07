@@ -27,6 +27,7 @@ export class PasswordStrengthService {
         strength = 'L';
       }
     }
+    console.log(strength);
     this.passwordStrengthSubject.next(strength);
   }
 }

@@ -7,7 +7,7 @@ import { PasswordStrengthService } from '../password-strength.service';
   styleUrls: ['./password-strength.component.css']
 })
 export class PasswordStrengthComponent implements OnInit {
-  strength: string = 'E';
+  strength: string = '';
 
   constructor(private passwordStrengthService: PasswordStrengthService) {}
 
@@ -20,7 +20,7 @@ export class PasswordStrengthComponent implements OnInit {
   getSectionClass(section: string){
     let strength = this.strength;
     let classMap = {
-      gray: strength !== 'NE' || 'S',
+      gray: strength === 'E' || (strength === 'L' && section !== 'first') || (strength === 'M' && section === 'third'),
       red: strength === 'NE' || (strength === 'L' && section === 'first'),
       yellow: strength === 'M' && section !== 'third',
       green: strength === 'S' 

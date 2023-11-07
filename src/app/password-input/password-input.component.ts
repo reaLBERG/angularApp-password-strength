@@ -1,17 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { PasswordStrengthService } from '../password-strength.service';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-password-input',
   templateUrl: './password-input.component.html',
-  styleUrls: ['./password-input.component.css']
+  styleUrls: ['./password-input.component.css'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => PasswordInputComponent),
+    multi: true
+  }]
 })
-export class PasswordInputComponent {
+export class PasswordInputComponent implements ControlValueAccessor {
   password: string = '';
   
   constructor(private passwordStrengthService: PasswordStrengthService) { }
   
-  calculateStrength() {
-    this.passwordStrengthService.calculateStrength(this.password);
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  writeValue(value: any): void {
+    if (value !== undefined) {
+      this.password = value;
+    }
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void { 
+    this.onTouched = fn;
+  }
+  checkStrength(event: Event): void {
+      const input = event.target as HTMLInputElement;
+      this.password = input.value;
+      this.onChange(this.password);
+      this.passwordStrengthService.calculateStrength(this.password);
   }
 }
